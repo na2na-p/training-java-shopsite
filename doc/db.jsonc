@@ -1,0 +1,27 @@
+{
+  "customer": [
+    {
+      "id": "int", // AI/PK
+      "login": "string", // NN/UQ ログインユーザ名
+      "password": "string" // NN
+    }
+  ],
+  "product": [
+    {
+      "id": "int", // AI/PK
+      "name": "varchar(100)", // NN
+      "price": "int" // NN decimalではないらしい
+    }
+  ],
+  "purchase": [
+    {
+        "id": "int" // AI/PK
+        "product_id": "int", // NN 謎:FKではないらしい
+        "product_name": "varchar(100)", // NN 謎:FKではないらしい
+        "product_price": "int", // NN 謎:FKではないらしい
+        "product_count": "int", // NN
+        "customer_name": "varchar(100)", // NN 謎:FKではないし、なんならidですらない。確かに同義のcustomer.loginというカラムがあってUQ制約はあるが、じゃあなんでこっちをPKにしないのか意味不明かも
+        "customer_address": "varchar(100)", // NN
+    }
+  ]
+}
