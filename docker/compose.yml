@@ -1,8 +1,8 @@
 services:
   # MySQL
   db:
-#    image: mysql:8.0.30-debian
-    build: .
+    image: mysql:8.0.30-debian
+#    build: .
     container_name: mysql_host
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -12,8 +12,8 @@ services:
       TZ: 'Asia/Tokyo'
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
-      - ./db/data:/var/lib/mysql
-#      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - mysql_data:/var/lib/mysql
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./db/sql:/docker-entrypoint-initdb.d
     ports:
       - "3306:3306"
@@ -31,3 +31,6 @@ services:
       - PMA_PASSWORD=root
     ports:
       - "18080:80"
+
+volumes:
+  mysql_data:
